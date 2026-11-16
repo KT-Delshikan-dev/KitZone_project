@@ -1,0 +1,35 @@
+{
+  "name": "@kitzone/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "check": "node --check src/server.js && node --check src/app.js",
+    "lint": "eslint src",
+    "test": "JWT_SECRET=dev-only-test-secret-must-be-at-least-32-chars MONGODB_URI=mongodb://127.0.0.1:27017/kitzone_test NODE_ENV=test node --test src/tests/*.test.js",
+    "seed": "node src/seed/run.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.22.3",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.0.0",
+    "jose": "^5.9.6",
+    "mongoose": "^8.24.8",
+    "morgan": "^1.10.0",
+    "multer": "^2.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0"
+  }
+}

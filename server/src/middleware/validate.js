@@ -1,0 +1,2 @@
+import { AppError } from '../utils/api.js';
+export function validate(schema, source = 'body') { return (req, _res, next) => { const parsed = schema.safeParse(req[source]); if (!parsed.success) return next(new AppError('Please check the submitted information', 400, parsed.error.issues.map((issue) => ({ field: issue.path.join('.'), message: issue.message })))); req[source] = parsed.data; next(); }; }

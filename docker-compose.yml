@@ -1,0 +1,16 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: kitzone-mongodb
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - kitzone-mongodb-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  kitzone-mongodb-data:

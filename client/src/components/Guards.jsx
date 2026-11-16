@@ -1,0 +1,2 @@
+import {Navigate,Outlet,useLocation} from 'react-router-dom';import {useSelector} from 'react-redux';
+export function ProtectedRoute({admin=false}){const {user,status}=useSelector(s=>s.auth);const location=useLocation();if(status==='loading')return <div className="page-loader"><span className="loader-orbit"/>Checking your session</div>;if(!user)return <Navigate to="/login" state={{from:location.pathname}} replace/>;if(admin&&user.role!=='admin')return <Navigate to="/" replace/>;return <Outlet/>;}

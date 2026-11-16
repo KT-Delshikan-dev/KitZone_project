@@ -1,0 +1,2 @@
+import {Shirt} from 'lucide-react';
+export function JerseyArt({product,compact=false}){const hue=product?.colors?.[0]||'#c9f31d';return <div className={`jersey-art ${compact?'compact':''}`} style={{'--shirt':hue}} aria-label={`${product?.name||'Football shirt'} demo product illustration`} role="img"><div className="jersey-glow"/><Shirt className="jersey-shape" strokeWidth={1.05}/><span className="jersey-mark">{product?.season?.slice(0,4)||'24'}</span><span className="demo-tag">DEMO</span></div>}
